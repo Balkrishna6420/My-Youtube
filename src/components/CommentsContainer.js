@@ -21,21 +21,28 @@ const commentsData = [
           {
             name: "balKrishna",
             text: "Lorem ipsum dolor sit amet, consectetur adip",
-            replies: [],
-          },
-          {
-            name: "balKrishna",
-            text: "Lorem ipsum dolor sit amet, consectetur adip",
             replies: [
               {
                 name: "balKrishna",
                 text: "Lorem ipsum dolor sit amet, consectetur adip",
-                replies: [],
-              },
-              {
-                name: "balKrishna",
-                text: "Lorem ipsum dolor sit amet, consectetur adip",
-                replies: [],
+                replies: [
+                  {
+                    name: "balKrishna",
+                    text: "Lorem ipsum dolor sit amet, consectetur adip",
+                    replies: [
+                      {
+                        name: "balKrishna",
+                        text: "Lorem ipsum dolor sit amet, consectetur adip",
+                        replies: [],
+                      },
+                    ],
+                  },
+                  {
+                    name: "balKrishna",
+                    text: "Lorem ipsum dolor sit amet, consectetur adip",
+                    replies: [],
+                  },
+                ],
               },
             ],
           },
@@ -58,13 +65,18 @@ const commentsData = [
     text: "Lorem ipsum dolor sit amet, consectetur adip",
     replies: [],
   },
+  {
+    name: "balKrishna",
+    text: "Lorem ipsum dolor sit amet, consectetur adip",
+    replies: [],
+  },
 ];
 const Comment = ({ data }) => {
   const { name, text, replies } = data;
   return (
-    <div className="flex items-start bg-gray-100 p-3 rounded-lg my-3 w-full xs:w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[70%] mx-auto shadow-sm">
+    <div className="flex bg-gray-100 p-3 rounded-lg my-3 w-full xs:w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[70%] mx-auto shadow-sm">
       <img
-        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full"
+        className="w-8 h-8 sm:w-12 sm:h-12 rounded-full"
         alt="user"
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOW34PFNB2wJ1Hf5AP88UYB4d-LDcOsC7i4g&s"
       />
