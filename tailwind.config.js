@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        xs: "400px", // Custom breakpoint for extra small screens
+        sm: "600px", // Adjusted for small screens
+        md: "900px", // Adjusted for medium screens
+        lg: "1200px", // Adjusted for large screens
+        xl: "1440px", // Extra-large screens
+      },
+    },
   },
   plugins: [],
 }
