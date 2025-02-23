@@ -5,11 +5,13 @@ import Sidebar from "./Sidebar";
 
 const Body = () => {
   return (
-    <div className="flex">
+    <div className="flex flex-col md:flex-row">
+      {/* Sidebar collapses on smaller screens */}
       <Sidebar />
-      <Outlet/>
+      <div className="flex-1 p-4">
+        <Outlet />
+      </div>
     </div>
-
   );
 };
 

@@ -22,7 +22,7 @@ const LiveChat = () => {
   }, []);
   return (
     <>
-      <div className="w-full h-[500px] ml-2 p-2 border border-black bg-slate-100 rounded-lg overflow-y-scroll flex flex-col-reverse">
+      <div className="w-full h-[400px] xs:h-[450px] sm:h-[500px] p-2 border border-black bg-slate-100 rounded-lg overflow-y-scroll flex flex-col-reverse md:w-3/4 lg:w-1/2 mx-auto">
         <div>
           {chatMessages.map((c, i) => (
             <ChatMessage key={i} name={c.name} message={c.message} />
@@ -31,7 +31,7 @@ const LiveChat = () => {
       </div>
 
       <form
-        className="w-full p-2 ml-2 border border-black"
+        className="w-full p-2 border border-black flex flex-col xs:flex-row items-center md:w-3/4 lg:w-1/2 mx-auto"
         onSubmit={(e) => {
           e.preventDefault();
           console.log("On Form submit", liveMessage);
@@ -41,18 +41,20 @@ const LiveChat = () => {
               message: liveMessage,
             })
           );
-          setLiveMessage(""); 
+          setLiveMessage("");
         }}
       >
         <input
-          className="px-2 w-56"
+          className="px-2 py-1 w-full xs:w-2/3 border rounded-lg"
           type="text"
           value={liveMessage}
           onChange={(e) => {
             setLiveMessage(e.target.value);
           }}
         />
-        <button className="px-2 mx-2 bg-green-100">Send</button>
+        <button className="px-4 py-2 mt-2 xs:mt-0 xs:ml-2 bg-green-500 text-white rounded-lg hover:bg-green-600">
+          Send
+        </button>
       </form>
     </>
   );

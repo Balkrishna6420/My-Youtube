@@ -6,7 +6,7 @@ const Sidebar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   if (!isMenuOpen) return null;
   return (
-    <div className="p-5 shadow-lg w-48">
+    <div className="p-4 xs:p-5 shadow-lg w-40 xs:w-48 sm:w-56">
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -23,7 +23,8 @@ const Sidebar = () => {
         <li>Gaming</li>
         <li>Movies</li>
       </ul>
-      <h1 className="font-bold pt-5-5">Watch Later</h1>
+
+      <h1 className="font-bold pt-5">Watch Later</h1>
       <ul>
         <li>Music</li>
         <li>Sports</li>

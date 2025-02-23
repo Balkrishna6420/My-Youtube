@@ -62,25 +62,25 @@ const commentsData = [
 const Comment = ({ data }) => {
   const { name, text, replies } = data;
   return (
-    <div className="flex shadow-sm bg-gray-100 p-2 rounded-lg my-2">
+    <div className="flex items-start bg-gray-100 p-3 rounded-lg my-3 w-full xs:w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] xl:w-[70%] mx-auto shadow-sm">
       <img
-        className="w-12 h-12"
+        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full"
         alt="user"
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOW34PFNB2wJ1Hf5AP88UYB4d-LDcOsC7i4g&s"
       />
-      <div className="px-3">
-        <p className="font-bold">{name}</p>
-        <p>{text}</p>
+      <div className="ml-3">
+        <p className="font-semibold text-sm sm:text-base">{name}</p>
+        <p className="text-xs sm:text-sm text-gray-700">{text}</p>
       </div>
     </div>
   );
 };
 const CommentsList = ({ comments }) => {
   return comments.map((comment, index) => (
-    <div key={index}>
+    <div key={index} className="ml-2 xs:ml-3 sm:ml-5 md:ml-7 lg:ml-10">
       <Comment data={comment} />
-      <div className="pl-5 border border-l-black ml-5">
-        <CommentsList comments={comment.replies}/>
+      <div className="pl-3 sm:pl-5 border-l-2 border-gray-300">
+        <CommentsList comments={comment.replies} />
       </div>
     </div>
   ));
@@ -88,8 +88,8 @@ const CommentsList = ({ comments }) => {
 
 const CommentsContainer = () => {
   return (
-    <div className="m-5 p-2">
-      <h1 className="text-2xl font-bold">Comments</h1>
+    <div className="m-3 p-3 xs:m-4 xs:p-4 sm:m-5 sm:p-5">
+      <h1 className="text-lg xs:text-xl sm:text-2xl font-bold">Comments</h1>
       <CommentsList comments={commentsData} />
     </div>
   );
