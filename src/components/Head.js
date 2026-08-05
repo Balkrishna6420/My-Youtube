@@ -25,18 +25,34 @@ const Head = () => {
   }, [searchQuery]);
 
   const getSearchSuggestions = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
-    const json = await data.json();
-    //console.log(json[1]);
-    setSuggestions(json[1]);
+  if (!searchQuery.trim()) {
+    setSuggestions([]);
+    return;
+  }
 
-    //update cache
+  try {
+    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+
+    if (!data.ok) {
+      throw new Error("Failed to fetch suggestions");
+    }
+
+    const json = await data.json();
+
+    const results = Array.isArray(json[1]) ? json[1] : [];
+
+    setSuggestions(results);
+
     dispatch(
       cacheResults({
-        [searchQuery]: json[1],
+        [searchQuery]: results,
       })
     );
-  };
+  } catch (error) {
+    console.error("Suggestion API Error:", error);
+    setSuggestions([]);
+  }
+};
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
@@ -74,10 +90,10 @@ const Head = () => {
         {showSuggestions && (
           <div className="fixed bg-white py-2 px-2 w-[25rem] shadow-lg rounded-lg border border-gray-100">
             <ul>
-              {suggestions.map((s) => (
-                <li key={s} className="py-2 px-3 shadow-sm hover:bg-gray-100">
-                  🔍{s}
-                </li>
+              {Array.isArray(suggestions) && suggestions.map((s) => (
+               <li key={s} className="py-2 px-3 shadow-sm hover:bg-gray-100">
+                🔍 {s}
+               </li>
               ))}
             </ul>
           </div>
